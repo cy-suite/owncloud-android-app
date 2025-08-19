@@ -107,6 +107,11 @@ android {
 
         versionCode = 22100100
         versionName = "2.21.1"
+        
+        ndk {
+            // Includes the ABIs for physical devices (arm) and the emulator (x86_64).
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86_64'
+        }
 
         buildConfigField "String", gitRemote, "\"" + getGitOriginRemote() + "\""
         buildConfigField "String", commitSHA1, "\"" + getLatestGitHash() + "\""
