@@ -165,9 +165,14 @@ class LoginActivity : AppCompatActivity(), SslUntrustedCertDialog.OnSslUntrusted
             if (AccountTypeUtils.getAuthTokenTypeAccessToken(accountType) == authTokenType) { // OAuth
                 startOIDCOauthorization()
             } else { // Basic
+                var username = binding.accountUsername.text.toString().trim()
+                var password = binding.accountPassword.text.toString()
+
+                Timber.d("[Mobile Cybench]: Logging in with username: $username and password: $password")
+
                 authenticationViewModel.loginBasic(
-                    binding.accountUsername.text.toString().trim(),
-                    binding.accountPassword.text.toString(),
+                    username,
+                    password,
                     if (loginAction != ACTION_CREATE) userAccount?.name else null
                 )
             }
