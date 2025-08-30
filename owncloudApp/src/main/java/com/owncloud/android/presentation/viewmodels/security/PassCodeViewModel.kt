@@ -41,7 +41,7 @@ import java.lang.StringBuilder
 import java.util.concurrent.TimeUnit
 import kotlin.math.max
 import kotlin.math.pow
-import timber.log.Timber
+import android.util.Log
 
 class PassCodeViewModel(
     private val preferencesProvider: SharedPreferencesProvider,
@@ -113,7 +113,7 @@ class PassCodeViewModel(
     }
 
     private fun actionCheckPasscode() {
-        Timber.d("PasscodeViewModel", "[Mobile Cybench]: Attempting to validate passcode: $passcodeString")
+        Log.d("PasscodeViewModel", "[Mobile Cybench]: Attempting to validate passcode: $passcodeString")
         if (checkPassCodeIsValid(passcodeString.toString())) {
             // pass code accepted in request, user is allowed to access the app
             setLastUnlockTimestamp()
@@ -148,7 +148,7 @@ class PassCodeViewModel(
             requestPassCodeConfirmation()
             _status.postValue(Status(PasscodeAction.CREATE, PasscodeType.NO_CONFIRM))
         } else if (confirmPassCode()) {
-            Timber.d("PasscodeViewModel", "[Mobile Cybench]: Passcode confirmed. Setting new passcode to: $passcodeString")
+            Log.d("PasscodeViewModel", "[Mobile Cybench]: Passcode confirmed. Setting new passcode to: $passcodeString")
             setPassCode()
             _status.postValue(Status(PasscodeAction.CREATE, PasscodeType.CONFIRM))
         } else {
