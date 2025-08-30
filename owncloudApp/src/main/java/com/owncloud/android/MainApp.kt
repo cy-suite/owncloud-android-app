@@ -173,7 +173,7 @@ class MainApp : Application() {
             }
         }
 
-        enabledLogging = preferenceProvider.getBoolean(PREFERENCE_ENABLE_LOGGING, false)
+        enabledLogging = preferenceProvider.getBoolean(PREFERENCE_ENABLE_LOGGING, true)
 
         if (enabledLogging) {
             LogsProvider(applicationContext).startLogging()
