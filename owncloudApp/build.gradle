@@ -189,6 +189,10 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    androidResources {
+	noCompress 'arsc'
+    }
 }
 
 // Updates output file names of a given variant to format
