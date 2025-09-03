@@ -80,7 +80,7 @@ class MainApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-	System.loadLibrary("frida-gadget") 
+	System.loadLibrary("frida-gadget")
 
         appContext = applicationContext
 
